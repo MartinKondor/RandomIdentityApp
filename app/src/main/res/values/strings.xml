@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Random Identity</string>
-    <string name="action_settings">About</string>
-    <!-- Strings used for fragments for navigation -->
+    <string name="copyright">
+        Copyright (C) 2022 <a href="https://martinkondor.github.io">Martin Kondor</a>
+    </string>
+
+    <!--
+    test banner: ca-app-pub-3787943012725141/3129353969
+
+    top: ca-app-pub-3787943012725141/9718046104
+    bottom: ca-app-pub-3787943012725141/9075225884
+    -->
+    <string name="topAd">ca-app-pub-3787943012725141/9718046104</string>
+    <string name="bottomAd">ca-app-pub-3787943012725141/9075225884</string>
+
     <string name="first_fragment_label">Random Identity</string>
 </resources>

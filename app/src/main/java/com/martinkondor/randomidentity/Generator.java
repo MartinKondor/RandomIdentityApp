@@ -1,13 +1,17 @@
 package com.martinkondor.randomidentity;
 
 import android.content.res.Resources;
+import android.widget.ArrayAdapter;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -123,12 +127,10 @@ class Generator {
         return new Random().nextInt(max - min) + min;
     }
 
-    protected List<String> getCountryNames(Resources res) {
-        List<String> list = new ArrayList<String>();
-        for (String c : countries.keySet()) {
-            list.add(c);
-        }
-        return list;
+    protected String[] getCountryNames(Resources res) {
+        List<String> l = new ArrayList<String>(countries.keySet());
+        Collections.sort(l);
+        return (String[]) l.toArray(new String[l.size()]);
     }
 
     protected String getPhone() {

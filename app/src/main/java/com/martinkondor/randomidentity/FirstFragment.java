@@ -15,7 +15,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -58,6 +60,12 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         g = new Generator(getResources());  // Load generator
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item,
+                g.getCountryNames(getResources()));
+        binding.countryList.setAdapter(adapter);
+        binding.countryList.setSelection(225);
+
         binding.generateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { generateNewId(getActivity()); }
@@ -66,7 +74,9 @@ public class FirstFragment extends Fragment {
 
     private void generateNewId(FragmentActivity ac) {
         boolean isMale = g.getInt(100) % 2 == 0;
-        String chosenCountry = "Hungary";
+        String chosenCountry = ((Spinner) ac.findViewById(R.id.countryList))
+                .getSelectedItem()
+                .toString();
 
         // Get new image if possible
         ImageView image = (ImageView) getActivity().findViewById(R.id.image);
